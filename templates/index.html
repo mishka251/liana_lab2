@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Mass Converter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="{% static  'index.js' %}"></script>
+</head>
+<body>
+<form id="main">
+    <label for="input-value">Введите значение</label>
+    <input id="input-value" type="number" name="inputValue">
+
+    <h4>Тип введенного</h4>
+    {% for type in types %}
+        <label>
+            <input type="radio" name="inputType" value="{{ type }}">
+            {{ type }}
+        </label>
+        <br>
+    {% endfor %}
+
+    <h4>Желаемый тип</h4>
+    {% for type in types %}
+        <label>
+            <input type="radio" name="outputType" value="{{ type }}">
+            {{ type }}
+        </label>
+        <br>
+    {% endfor %}
+<button type="submit">Посчитать</button>
+    <h3 class="result-box"></h3>
+</form>
+</body>
+</html>
